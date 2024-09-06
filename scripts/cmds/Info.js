@@ -18,7 +18,7 @@ module.exports = {
     const currentAuthor = "Mahi--";
     const infoMessage = `
 𝗡𝗮𝗺𝗲: Mahi ❣
-𝗦𝘂𝗿𝗻𝗮𝗺𝗲: Easir 
+𝗦𝘂𝗿𝗻𝗮𝗺𝗲: MAHI AHMED 
 𝗡𝗶𝗰𝗸𝗻𝗮𝗺𝗲: Akagami Aizen 
 𝗕𝗶𝗿𝘁𝗵𝗱𝗮𝘆: September 2
 𝗧𝗮𝘁𝘁𝗼𝗼𝘀: Nah, hate it 😐
@@ -32,7 +32,7 @@ module.exports = {
 𝗙𝗮𝘃𝗼𝘂𝗿𝗶𝘁𝗲 𝗗𝗿𝗶𝗻𝗸: 7up ⚽ 
 𝗕𝗿𝗼𝗸𝗲 𝗦𝗼𝗺𝗲𝗼𝗻𝗲'𝘀 𝗛𝗲𝗮𝗿𝘁: Once (now she's my wife)
 𝗚𝗼𝘁 𝗔𝗿𝗿𝗲𝘀𝘁𝗲𝗱: Nope
-𝗕𝗢𝗧 𝗢𝗪𝗡𝗘𝗥 𝗜𝗗 : https://www.facebook.com/100072881080249
+𝗕𝗢𝗧 𝗢𝗪𝗡𝗘𝗥 𝗜𝗗 : https://www.facebook.com/profile.php?id=100089286199594
     `;
     const gifs = [
       "https://i.ibb.co/gTVr40D/received-1034834824233979.gif",
