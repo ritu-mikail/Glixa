@@ -19,7 +19,7 @@ module.exports = {
 
     version: "1.17",
 
-    author: "NTKhang", // KaizenXMahi
+    author: "NTKhang", // KaiznXMahi
 
     countDown: 10,
 
