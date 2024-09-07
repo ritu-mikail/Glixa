@@ -3,7 +3,7 @@ module.exports = {
     name: "uptime",
     aliases: ["up", "upt"],
     version: "1.0",
-    author: "XyryllPanget",
+    author: "XyryllPangt",
     role: 0,
     shortDescription: {
       en: "Displays the uptime of the bot."
