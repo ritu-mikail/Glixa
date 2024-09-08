@@ -1,68 +1,119 @@
-const axios = require('axios');
+const axios = require("axios");
+const rubishapi = global.GoatBot.config.rubishapi;
 
 module.exports = {
   config: {
-    name: "love",
-    version: "1.0",
-    author: "RUBISH",
-    countDown: 5,
-    role: 0,
-    shortDescription: {
-      vi: "Tính chỉ số tình cảm",
-      en: "Calculate love compatibility"
-    },
+    name: 'mihi',
+    aliases: ["mihi"],
+    version: '3.0',
+    author: 'RUBISH',
+    shortDescription: 'AI CHAT',
     longDescription: {
-      vi: "Sử dụng lệnh này để tính chỉ số tình cảm giữa hai người.",
-      en: "Use this command to calculate love compatibility between two people."
+      vi: 'Chat with simma',
+      en: 'Chat with simma'
     },
-    category: "fun",
-    guide: {
-      vi: "Cú pháp: love [tên người thứ nhất] - [tên người thứ hai]",
-      en: "Syntax: love [first person's name] - [second person's name]"
+    category: 'AI CHAT',
+    guide: { en: `
+{pn} Hi : chat with simma
+
+{pn} teach <original word> - <response>: Teach Simsimi how to respond to the original word.
+
+{pn} <original word>: Simsimi will respond based on the original word.
+
+Example:
+
+{pn} teach hello - Hi there
+
+{pn} <original word>: Simsimi will respond based on the original word.
+
+{pn} stats: Display statistics on the number of responses and original words.` }
+  },
+
+  onReply: async function ({ api, event }) {
+    if (event.type === "message_reply") {
+      const reply = event.body.toLowerCase();
+      if (isNaN(reply)) {
+        try {
+          const { data } = await axios.get(`${rubishapi}/chat`, {
+            params: { query: reply, apikey: 'rubish69' }
+          });
+          const responseMessage = data.response;
+          await api.sendMessage(responseMessage, event.threadID, (error, info) => {
+            global.GoatBot.onReply.set(info.messageID, {
+              commandName: this.config.name,
+              type: 'reply',
+              messageID: info.messageID,
+              author: event.senderID,
+              link: responseMessage
+            });
+          }, event.messageID);
+        } catch (error) {
+          console.error(error);
+        }
+      }
     }
   },
 
-onStart: async function ({ api, args, message, event }) {
-    try {
-      const text = args.join(" ");
-      const [fname, sname] = text.split('-').map(name => name.trim());
+  onStart: async function ({ api, args, event }) {
+    const { threadID, messageID, senderID } = event;
+    const [command, ...restArgs] = args;
+    const tid = threadID;
+    const mid = messageID;
+    const uid = senderID;
 
-      if (!fname || !sname) {
-        return message.reply("❌ Please provide the names of both individuals.");
+    if (command === 'teach') {
+      const [ask, ans] = restArgs.join(' ').split('-').map(item => item.trim());
+      if (!ask || !ans) return api.sendMessage('⚠ | Both the question and response are required and should be separated by " - ".', tid, mid);
+
+      try {
+        const { data } = await axios.get(`${rubishapi}/teach`, {
+          params: { query: ask, response: ans, apikey: 'rubish69' }
+        });
+        const responseMessage = data.message || "Successfully taught simma.";
+        return api.sendMessage(responseMessage, tid, mid);
+      } catch (error) {
+        console.error('Error occurred while teaching', error.message);
+        return api.sendMessage("I couldn't learn that. Please try again later.", tid, mid);
       }
+    }
 
-      const response = await axios.get('https://love-calculator.api-host.repl.co/love-calculator', {
-        params: { fname, sname }
-      });
-
-      const result = response.data;
-
-      let loveMessage = `💖 Love Compatibility 💖\n\n${fname} ❤️ ${sname}\n\nPercentage: ${result.percentage}%\n\n● ${result.result}\n`;
-
-      const intervalMessages = {
-        10: "Just the beginning! Keep exploring your feelings.",
-        20: "There's potential here. Keep nurturing your connection.",
-        30: "A solid foundation! Your love is growing.",
-        40: "Halfway there! Your relationship is blossoming.",
-        50: "A balanced and promising connection! Cherish your love.",
-        60: "Growing stronger! Your bond is becoming more profound.",
-        70: "On the right track to a lasting love! Keep building.",
-        80: "Wow! You're a perfect match! Your love is extraordinary.",
-        90: "Almost there! Your flame is burning brightly.",
-        100: "Congratulations on a perfect connection! You two are meant to be!"
-      };
-
-      const interval = Math.floor(result.percentage / 10) * 10;
-      const intervalMessage = intervalMessages[interval];
-
-      if (intervalMessage) {
-        loveMessage += `\n● ${intervalMessage} `;
+    if (command === 'stats') {
+      try {
+        const { data } = await axios.get(`${rubishapi}/stats`, {
+          params: { apikey: 'rubish69' }
+        });
+        const responseMessage = data.stats || "✅ | Fetched the stats successfully.";
+        api.sendMessage(responseMessage, tid);
+      } catch (error) {
+        console.error('Error occurred while fetching stats', error.message);
+        api.sendMessage("⚠ | Failed to fetch the stats. Please try again later.", tid);
       }
+    } 
 
-      message.reply(loveMessage);
-    } catch (error) {
-      console.error(error);
-      message.reply("❌ An error occurred while calculating love compatibility. Please try again later.");
+    else {
+      try {
+        const rubish = args.join(" ").toLowerCase();
+        if (!rubish) {
+          api.sendMessage("Hello I'm Simma\n\nHow can I assist you?", tid, mid);
+          return;
+        }
+        const { data } = await axios.get(`${rubishapi}/chat`, {
+          params: { query: rubish, apikey: 'rubish69' }
+        });
+        const responseMessage = data.response;
+        await api.sendMessage(responseMessage, tid, (error, info) => {
+          global.GoatBot.onReply.set(info.messageID, {
+            commandName: this.config.name,
+            type: 'reply',
+            messageID: info.messageID,
+            author: senderID,
+            link: responseMessage
+          });
+        }, mid);
+      } catch (error) {
+        console.error(`Failed to get an answer: ${error.message}`);
+        api.sendMessage(`${error.message}.\nAn error`, tid, mid);
+      }
     }
   }
 };
