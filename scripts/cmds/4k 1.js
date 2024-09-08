@@ -26,7 +26,7 @@ module.exports = {
         imageUrl = replyAttachment.url;
       } else {
         return api.sendMessage(
-          { body: "❌ | Reply must be an image." },
+          { body: "❌ | Reply must be an image🤡." },
           event.threadID
         );
       }
