@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "adinfo",
     aliases: [],
-    author: "Mahi--",
+    author: "Mahi-",
     version: "1.0",
     cooldowns: 0,
     role: 1,  // Admin role to ensure this feature is active at all times
