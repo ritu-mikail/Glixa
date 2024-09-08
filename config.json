@@ -23,7 +23,7 @@
     "whiteListIds": ["100089286199594","",""],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
-  "nickNameBot": " 𝗦𝗣𝗥𝗜𝗛𝗔 3.0",
+  "nickNameBot": " LISA 💜💝 3.0",
   "prefix": "/",
   "database": {
     "type": "mongodb",
@@ -51,7 +51,6 @@
     "expireVerifyCode": 300000,
     "port": 3001
   },
- "rubishapi": "https://rubish-apihub.onrender.com/Rubish" 
   "serverUptime": {
     "enable": false,
     "port": 3001,
