@@ -35,7 +35,7 @@
     "ignoreCommand": []
   },
   "authorName": "Mahi Ahmed ",
-  "authorFB": "",
+  "authorFB": "https://www.facebook.com/profile.php?id=100089286199594",
   "vipUser": [
     "100093581300531",
     "100089286199594",
@@ -75,7 +75,7 @@
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
   },
   "nickNameBot": "LISA V2💜💝",
-  "prefix": ".",
+  "prefix": "!",
   "database": {
     "type": "mongodb",
     "uriMongodb": "mongodb+srv://mahibot:siambro@mahibot1.qcqdroy.mongodb.net/GoatBotV2?retryWrites=true&w=majority",
