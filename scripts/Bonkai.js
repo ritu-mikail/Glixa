@@ -5,7 +5,7 @@ module.exports = {
     name: "jugram",
     aliases: ["pek"],
     version: "1.0",
-    author: "Mahi--",
+    author: "Mahi-",
     countDown: 5,
     role: 0,
     shortDescription: "Chat with GPT",
