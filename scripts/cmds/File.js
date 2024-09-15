@@ -1,38 +1,54 @@
 const fs = require('fs-extra');
+const path = require('path'); // Import path for better path handling
 
 const { getPrefix } = global.utils;
 
 module.exports = {
   config: {
-    name: 'file',
-    version: '1.0',
+    name: 'efile',
+    version: '1.1',
     role: 0,
     coolDown: 5,
-    author: 'UPoL The MiMis Momo ',
+    author: 'Mahi--',
     category: 'Admin',
     shortDescription: {
-      en: 'sending file'
+      en: 'sending event file'
     },
     longDescription: {
-      en: 'Sending file form bot scripts',
+      en: 'Sending event file from bot scripts',
     },
   },
   onStart: async function ({ api, event, args, message }) {
-   const permission = ['100072881080249', '100094357823033'];
-    if (!permission.includes(event.senderID)) return api.sendMessage('Only Bot Admin\'s can use this command. My Sensei mahi can do this.', event.threadId, event.messageId);
-    
+    const permission = ['100089286199594', '100094357823033'];
+    if (!permission.includes(event.senderID)) {
+      return api.sendMessage('Only Bot Admin\'s can use this command. My Sensei mahi can do this.', event.threadID, event.messageID);
+    }
+
     const { threadID, messageID } = event;
     const prefix = getPrefix(threadID);
     const commandName = this.config.name;
     const command = prefix + commandName;
+
+    // Check if file name is provided
     if (args.length === 0) {
-      return message.reply(`file এর নাম কে দিবে ?. Use: ${command} <file_name>`);
+      return message.reply(`File এর নাম কে দিবে? Use: ${command} <file_name>`);
     }
-    const fileName = args[0];
-    const filePath = `${__dirname}/${fileName}`;
+
+    let fileName = args[0];
+
+    // Automatically append .js if no extension is provided
+    if (!fileName.includes('.')) {
+      fileName += '.js';
+    }
+
+    // Path to `scripts/events` directory
+    const filePath = path.join(__dirname, '..', 'events', fileName);
+
+    // Check if the file exists
     if (!fs.existsSync(filePath)) {
-      return message.reply(`File ${fileName} নাই নাম ঠিক দিছস তো ??.`);
+      return message.reply(`File ${fileName} নাই, নাম ঠিক দিছস তো??`);
     }
+
     try {
       const fileData = fs.readFileSync(filePath, 'utf-8');
       api.sendMessage(fileData, threadID, messageID);
