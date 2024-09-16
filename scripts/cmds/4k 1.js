@@ -1,4 +1,4 @@
-aconst a = require('axios');
+const a = require('axios');
 const tinyurl = require('tinyurl');
 
 module.exports = {
