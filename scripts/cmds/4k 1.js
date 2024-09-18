@@ -1,12 +1,11 @@
 const a = require('axios');
 const tinyurl = require('tinyurl');
-
 module.exports = {
   config: {
     name: "upscaleai",
     aliases: ["4k", "upscale"],
     version: "1.0",
-    author: "JAIF",
+    author: "JARIF",
     countDown: 15,
     role: 0,
     longDescription: "Upscale your image.",
