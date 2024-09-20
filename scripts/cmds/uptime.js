@@ -37,7 +37,7 @@ module.exports = {
 
     const response = `𝐒𝐭𝐚𝐭𝐮𝐬\n`
       + '----------------------\n'
-      + '⚙  𝐒𝐲𝐬𝐭𝐞𝐦 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 MAHIs bankai bot:\n'
+      + '⚙  𝐒𝐲𝐬𝐭𝐞𝐦 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 GOJO X MAHI bankai bot:\n'
       + `  𝐎𝐒: ${systemInfo.os}\n`
       + `  𝐀𝐫𝐜𝐡: ${systemInfo.arch}\n`
       + `  𝐂𝐏𝐔: ${systemInfo.cpu}\n`
