@@ -19,7 +19,7 @@ module.exports = {
     const infoMessage = `
 𝗡𝗮𝗺𝗲: Mahi ❣
 𝗦𝘂𝗿𝗻𝗮𝗺𝗲: MAHI AHMED 
-𝗡𝗶𝗰𝗸𝗻𝗮𝗺𝗲: Akagami Aizen 
+𝗡𝗶𝗰𝗸𝗻𝗮𝗺𝗲: GOJO SATORU
 𝗕𝗶𝗿𝘁𝗵𝗱𝗮𝘆: September 2
 𝗧𝗮𝘁𝘁𝗼𝗼𝘀: Nah, hate it 😐
 𝗥𝗲𝗹𝗮𝘁𝗶𝗼𝗻𝘀𝗵𝗶𝗽 𝗦𝘁𝗮𝘁𝘂𝘀: Married with my special one 
