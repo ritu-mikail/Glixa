@@ -54,7 +54,7 @@ module.exports = {
       api.sendMessage(fileData, threadID, messageID);
     } catch (error) {
       console.error(error);
-      message.reply(`তোর file e problem আছে চেক দে.`);
+      message.reply(`তোর file e problem আছে চেক দে🥵.`);
     }
   }
 };
