@@ -9,7 +9,7 @@ module.exports = {
     version: '1.1',
     role: 0,
     coolDown: 5,
-    author: 'Mahi--',
+    author: 'Mahi-',
     category: 'Admin',
     shortDescription: {
       en: 'sending event file'
