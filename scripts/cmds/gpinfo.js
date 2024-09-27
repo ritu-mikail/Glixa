@@ -6,7 +6,7 @@ config: {
 		name: "groupinfo",
     aliases: ['boxinfo'],
     version: "1.0",
-		author: "Loid Butter",
+		author: "Loid Buter",
 		countDown: 5,
 		role: 0,
 		shortDescription: "See Full Box Information With Image",
